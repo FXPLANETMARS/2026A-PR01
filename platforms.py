@@ -36,16 +36,27 @@ def create_platform(x, y, platform_type="green"):
     plateforme verte. Votre travail consiste à le généraliser afin qu'il
     représente aussi correctement les plateformes bleues, marron et à ressort.
     """
+    image = platform_images[platform_type]
 
+    if platform_type == "blue":
+        vx = MOVING_PLATFORM_SPEED
+    else:
+        vx = 0
+
+    if platform_type == "spring":
+        height = PLATFORM_SIZE[1] + 10
+    else:
+        height = PLATFORM_SIZE[1]
+      
     platform = {
         "x": float(x),
         "y": float(y),
-        "type": "green",                    # TODO
-        "image": platform_images["green"],  # TODO
-        "vx": 0.0,                          # TODO
+        "type": platform_type,                    # TODO
+        "image": platform_images[platform_type],  # TODO
+        "vx": vx,                                 # TODO
         "active": True,
         "width": PLATFORM_SIZE[0],
-        "height": PLATFORM_SIZE[1]           # TODO
+        "height": height                          # TODO
     }
 
     # TODO : Modifiez le dictionnaire ci-dessus pour qu'il dépende réellement
